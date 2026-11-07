@@ -58,7 +58,7 @@ flowchart TD
 | **1** | **`idea-to-prd`** | Product Manager (PM) | `docs/prd/<feature>-prd.md` | [`skills/idea-to-prd/`](skills/idea-to-prd/) |
 | **2** | **`prd-to-uiux-design`** | Product Designer (UI/UX) | `docs/design/<feature>-design-spec.md` | [`skills/prd-to-uiux-design/`](skills/prd-to-uiux-design/) |
 | **3** | **`prd-to-tech-design`** | System Architect / Tech Lead | `docs/architecture/<feature>-tech-design.md` | [`skills/prd-to-tech-design/`](skills/prd-to-tech-design/) |
-| **4** | **`qa-test-planner`** | QA Architect / Test Lead | `docs/qa/<feature>-test-plan.md` | [`skills/qa-test-planner/`](skills/qa-test-planner/) |
+| **4** | **`qa-test-planner`** | QA Architect / Test Automation Lead | `docs/qa/<feature>-test-plan.md` & `tests/*.spec.ts` | [`skills/qa-test-planner/`](skills/qa-test-planner/) |
 | **5** | **`spec-to-backlog`** | Scrum Master / Delivery Lead | `docs/planning/<feature>-tasks.md` | [`skills/spec-to-backlog/`](skills/spec-to-backlog/) |
 | **6** | **`tdd-task-executor`** | 5 Full-Stack Coder Personas | Source code, test suites, git commits | [`skills/tdd-task-executor/`](skills/tdd-task-executor/) |
 | **7** | **`engineering-drift-auditor`** | Conformance Gatekeeper | `docs/audits/<feature>-conformance-audit.md` | [`skills/engineering-drift-auditor/`](skills/engineering-drift-auditor/) |

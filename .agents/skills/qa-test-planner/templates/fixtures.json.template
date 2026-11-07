@@ -1,0 +1,40 @@
+{
+  "validResource": {
+    "name": "Standard Production Resource",
+    "tenant_id": "550e8400-e29b-41d4-a716-446655440000",
+    "status": "active",
+    "metadata": {
+      "tier": "enterprise",
+      "region": "us-east-1"
+    }
+  },
+  "edgeCases": {
+    "maxLengthName": {
+      "name": "A".repeat(255),
+      "tenant_id": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "specialCharactersName": {
+      "name": "Resource <script>alert(1)</script> & 🚀 #1",
+      "tenant_id": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "utf8Unicode": {
+      "name": "リソース・テスト・データ 🌟",
+      "tenant_id": "550e8400-e29b-41d4-a716-446655440000"
+    }
+  },
+  "invalidInputs": {
+    "emptyName": {
+      "name": "",
+      "tenant_id": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "malformedUUID": {
+      "name": "Bad Tenant",
+      "tenant_id": "not-a-valid-uuid"
+    },
+    "excessivePayload": {
+      "name": "Too Big",
+      "tenant_id": "550e8400-e29b-41d4-a716-446655440000",
+      "overflowField": "X".repeat(1000000)
+    }
+  }
+}

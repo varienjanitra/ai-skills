@@ -1,0 +1,57 @@
+import { test, expect } from '@playwright/test';
+import { {Feature}Page } from './pages/{feature}.page';
+
+/**
+ * [End-to-End User Journey Test] {Feature Name}
+ * Executes the complete real browser workflow through Playwright.
+ * References:
+ * - PRD: docs/prd/{feature-name}-prd.md
+ * - Design Spec: docs/design/{feature-name}-design-spec.md
+ */
+
+test.describe('E2E User Journey: {Feature Name}', () => {
+  let featurePage: {Feature}Page;
+
+  test.beforeEach(async ({ page }) => {
+    featurePage = new {Feature}Page(page);
+    await featurePage.goto();
+  });
+
+  test('E2E-01: User can create a new resource and see it appear in the data table', async ({ page }) => {
+    const resourceName = `E2E Resource ${Date.now()}`;
+
+    // 1. Open creation dialog / drawer
+    await featurePage.openCreateDrawer();
+
+    // 2. Fill in form values
+    await featurePage.fillResourceForm(resourceName, 'Created via automated Playwright E2E suite');
+
+    // 3. Submit
+    await featurePage.submitForm();
+
+    // 4. Verification: Dialog should close, and new item should appear in table
+    await expect(featurePage.submitDrawer).toBeHidden();
+    const newRow = page.getByRole('row', { name: new RegExp(resourceName, 'i') });
+    await expect(newRow).toBeVisible();
+  });
+
+  test('E2E-02: Form validation prevents submission with empty required fields', async ({ page }) => {
+    await featurePage.openCreateDrawer();
+    await featurePage.submitForm();
+
+    // Verify error feedback matching 8 interaction states
+    const validationError = page.getByText(/name is required/i);
+    await expect(validationError).toBeVisible();
+    await expect(featurePage.submitDrawer).toBeVisible();
+  });
+
+  test('E2E-03: Keyboard navigation conforms to WCAG 2.1 AA tab order', async ({ page }) => {
+    // Focus search input
+    await featurePage.searchInput.focus();
+    await expect(featurePage.searchInput).toBeFocused();
+
+    // Press Tab and verify focus reaches Create CTA
+    await page.keyboard.press('Tab');
+    await expect(featurePage.createButton).toBeFocused();
+  });
+});

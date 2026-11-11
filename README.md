@@ -88,3 +88,11 @@ git add -A && git commit -m "feat(mentor): refine skill instructions" && git pus
 To add a new skill suite `<new-suite-name>` to this monorepo:
 1. Create `<new-suite-name>/AGENTS.md` (optional workspace rule) and `<new-suite-name>/skills/<skill-name>/SKILL.md`.
 2. `./scripts/install.sh <new-suite-name> /path/to/project` and `./scripts/sync.sh <new-suite-name> /path/to/project` will automatically recognize the new folder with zero script changes required (and you can optionally add a shorthand alias in `scripts/install.sh` and `scripts/sync.sh`).
+
+---
+
+## 🛠️ Repository Administration & Maintenance
+
+For guidance on Git authentication, SSH key configuration, credential caching, and troubleshooting remote connection issues across development machines:
+- See **[`README-ADMIN.md`](README-ADMIN.md)** (covers 60-second SSH setup, cryptographic mental models, PAT fallback, and security invariants).
+
